@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Page d'affichage des données</title>
+</head>
+<body>
+    <h1>Données depuis le Backend</h1>
+    <ul id="data-list"></ul>
+
+    <script>
+        
+        const apiUrl = 'https://api.example.com/data';
+
+        
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const list = document.getElementById('data-list');
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item.name; // Remplacez 'name' par le champ que vous voulez afficher
+                    list.appendChild(li);
+                });
+            })
+            .catch(error => console.error('Erreur lors de la récupération des données :', error));
+    </script>
+</body>
+</html>
